@@ -1,0 +1,38 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  // assumes 16px browser default, to get 10px, which makes rem easy to use
+  // 1rem = 10px
+  // 10px/16px = 62.5%
+  // phone is also 50%, use tab-port
+  // has to be in order
+  // tab-land(larger) comes first
+
+  @include respond(tab-land) {
+    font-size: 56.25%; // 1 rem = 9px, 9/16 = 56.25%, width < 1200px?
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%; // 1 rem = 8px, 8/16 = 50%, width < 900px?
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; // 1 rem = 12, 12/16 = 75%
+  }
+}
+
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
+}
